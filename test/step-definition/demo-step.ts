@@ -1,6 +1,6 @@
 import { Given, Then, When } from "@wdio/cucumber-framework";
-import { timeouts } from "../../../config/timeouts-config";
-import { browserOpenUrl } from "../../helper/browser/browser-open-url";
+import { timeouts } from "../../config/timeouts-config";
+import { browserOpenUrl } from "../helper/browser/browser-open-url";
 
 export let validCredential: any = {
     username: 'trainee',
