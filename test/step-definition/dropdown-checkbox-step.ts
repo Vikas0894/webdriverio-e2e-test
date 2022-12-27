@@ -2,6 +2,7 @@ import { Given, Then, When } from "@wdio/cucumber-framework";
 import { timeouts } from "../../config/timeouts-config";
 import { assertEqual } from "../helper/assert/assert-equal";
 import { browserOpenUrl } from "../helper/browser/browser-open-url";
+import { browserPause } from "../helper/browser/browser-pause";
 
 export let dob: any = {
     day: 3,
@@ -11,7 +12,7 @@ export let dob: any = {
 Given(/^Open the facebook page$/, async () => {
     await browserOpenUrl('https://www.facebook.com');
     await browser.maximizeWindow();
-    await browser.pause(5000);
+    await browserPause(timeouts.large);
 });
 
 Then(/^I expect Login Page is displayed$/, async () => {

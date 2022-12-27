@@ -4,7 +4,7 @@ import { assertEqual } from "../helper/assert/assert-equal";
 import { browserOpenUrl } from "../helper/browser/browser-open-url";
 import { validCredential } from "./login/login-step";
 
-Given(/^Open the actitime application in maximise window$/, async () => {
+Given(/^Open the actitime Application$/, async () => {
     await browserOpenUrl('https://demo.actitime.com/login.do');
     await browser.maximizeWindow();
 });

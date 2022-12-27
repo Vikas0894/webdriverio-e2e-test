@@ -11,21 +11,21 @@ Given(/^Open the actitime application$/, async () => {
     await browserOpenUrl('https://demo.actitime.com/login.do');
 });
 
-Then(/^I expect Login page is displayed$/, async () => {
+Then(/^I expect login page is displayed$/, async () => {
     await $('//input[@id="username"]').waitForDisplayed();
     await $('//input[@name="pwd"]').waitForDisplayed();
     await $('//a[@id="loginButton"]').waitForClickable();
     await browser.pause(timeouts.small);
 });
 
-When(/^I enter the valid Username and password$/, async () => {
+When(/^I enter the valid username and password$/, async () => {
     await $('//input[@id="username"]').setValue(validCredential.username);
     await $('//input[@name="pwd"]').setValue(validCredential.password);
     await $('//a[@id="loginButton"]').click();
     await browser.pause(timeouts.small);
 });
 
-Then(/^I expect home page should be Displayed$/, async () => {
+Then(/^I expect home page should be displayed$/, async () => {
     await browser.keys('Enter');
     //await $('//div[@id="logo_aT"]').waitForDisplayed();
     await $('//a[@id="logoutLink"]').waitForClickable();

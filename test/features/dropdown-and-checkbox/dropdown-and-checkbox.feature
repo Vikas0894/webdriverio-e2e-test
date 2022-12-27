@@ -1,6 +1,6 @@
 Feature: To handle "dropdown and checkbox"
 
-    @dropdown_and_checkbox
+    @dropdown_and_checkbox @e2e
     Scenario Outline: input and key handle
         Given Open the facebook page
         Then I expect Login Page is displayed
