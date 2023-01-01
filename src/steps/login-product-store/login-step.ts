@@ -5,7 +5,8 @@ import { browserOpenUrl } from "../../support/browser/browser-open-url";
 
 
 Given(/^I am on product store home$/, async () => {
-    await browserOpenUrl('https://www.demoblaze.com/');
+    //@ts-ignore
+    await browserOpenUrl(browser.config.app);
 });
 
 Then(/^I expect product store home page is displayed$/, async () => {

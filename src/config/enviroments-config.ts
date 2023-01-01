@@ -1,8 +1,7 @@
+import { config as baseconfig } from '../../wdio.conf';
 
-const enviroments : any = {
-   // dev: {
-    actiTime: 'https://demo.actitime.com/login.do',
-    creditCard: 'https://www.onemainfinancial.com/log-in',
-    facebook: 'https://www.facebook.com/',
-   // }
-};
+export const config = Object.assign(baseconfig, {
+   environments: 'dev',
+   app: 'https://www.demoblaze.com/',
+   client: 'https://demo.actitime.com/login.do/',
+});

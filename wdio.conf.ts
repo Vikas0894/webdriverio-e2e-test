@@ -1,7 +1,12 @@
-import type { Options } from '@wdio/types'
-import allure from '@wdio/allure-reporter'
+//@ts-nocheck
+import type { Options } from '@wdio/types';
+import allure from '@wdio/allure-reporter';
+import fs from 'fs'
+import dotenv from 'dotenv'
 
-export const config: Options.Testrunner = {
+dotenv.config();
+
+export const config: WebdriverIO.Config = {
     //
     // ====================
     // Runner Configuration
@@ -166,8 +171,8 @@ export const config: Options.Testrunner = {
         ['allure',
             {
                 outputDir: 'allure-results',
-                disableWebdriverStepsReporting:true,
-                useCucumberStepReporter:true
+                disableWebdriverStepsReporting: true,
+                useCucumberStepReporter: true
             }
         ]
     ],
@@ -211,8 +216,11 @@ export const config: Options.Testrunner = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config, capabilities) {
+        if (process.env.RUNNER === "LOCAL" && fs.existsSync) {
+            fs.readdirSync('./allure-results', { recursive: true })
+        }
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -316,8 +324,9 @@ export const config: Options.Testrunner = {
      * @param {String}                   uri      path to feature file
      * @param {GherkinDocument.IFeature} feature  Cucumber feature object
      */
-    // afterFeature: function (uri, feature) {
-    // },
+    afterFeature: function (uri, feature) {
+        allure.addEnvironment('Enviroment: ', browser.config.environments)
+    },
 
     /**
      * Runs after a WebdriverIO command gets executed

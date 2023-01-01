@@ -1,4 +1,4 @@
-import { timeouts } from "../configs/timeouts-config";
+import { timeouts } from "../config/timeouts-config";
 import { browserWaitUntil } from "./browser/browser-wait-until";
 
 export const switchToWebView = async (): Promise<void> => {
