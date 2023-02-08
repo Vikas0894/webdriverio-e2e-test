@@ -1,4 +1,5 @@
-import { timeouts } from "../configs/timeouts-config";
+import { timeouts } from "../config/timeouts-config";
+
 
 export const dragAndDropFromLocation = async (
     location: { x: number; y: number },
