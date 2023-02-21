@@ -173,12 +173,7 @@ exports.config = {
                 disableWebdriverStepsReporting: true,
                 useCucumberStepReporter: true
             },
-        ],
-        ['junit',
-            {
-                outputDir: './'
-            },
-        ],
+        ]
     ],
     //
     // If you are using Cucumber you need to specify the location of your step definitions.

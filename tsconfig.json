@@ -1,17 +1,18 @@
 {
     "compilerOptions": {
-        "esModuleInterop": true,
+        "target": "ES2019",
+        "module": "CommonJS",
         "moduleResolution": "node",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "suppressExcessPropertyErrors": true,
+        "outDir": "./dist", 
         "types": [
             "node",
             "webdriverio/async",
             "@wdio/cucumber-framework",
             "expect-webdriverio"
         ],
-        "target": "ES2019",
-        "module": "CommonJS",
-        "resolveJsonModule": true,
-        "suppressExcessPropertyErrors": true,
-        "outDir": "./dist",
+       
     }
 }

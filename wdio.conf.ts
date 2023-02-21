@@ -5,6 +5,7 @@ import fs from 'fs'
 import dotenv from 'dotenv'
 
 dotenv.config();
+let debug = process.env.DEBUG;
 
 export const config: WebdriverIO.Config = {
     //
@@ -105,7 +106,8 @@ export const config: WebdriverIO.Config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'error',
+    //logLevel: 'error',
+    logLevel: DEBUG.toUpperCase() === "Y" ? "info" : "error",
     //
     // Set specific log levels per logger
     // loggers:
@@ -172,7 +174,8 @@ export const config: WebdriverIO.Config = {
             {
                 outputDir: 'allure-results',
                 disableWebdriverStepsReporting: true,
-                useCucumberStepReporter: true
+                useCucumberStepReporter: true,
+                disableWebdriverScreenshotsReporting: false
             }
         ]
     ],
@@ -217,7 +220,7 @@ export const config: WebdriverIO.Config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      */
     onPrepare: function (config, capabilities) {
-        if (process.env.RUNNER === "LOCAL" && fs.existsSync) {
+        if (process.env.RUNNER === 'LOCAL' && fs.existsSync('./allure-results')) {
             fs.readdirSync('./allure-results', { recursive: true })
         }
     },
@@ -282,8 +285,19 @@ export const config: WebdriverIO.Config = {
      * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
      * @param {Object}                 context  Cucumber World object
      */
-    // beforeScenario: function (world, context) {
-    // },
+    beforeScenario: function (world, context) {
+        // console.log(`world is:${JSON.stringify(world)}`)
+        let arr = world.pickle.name.split(/:/);
+
+        // @ts-ignore
+        if (arr.length > 0) browser.config.testid = arr[0];
+
+        // @ts-ignore
+        if (!browser.config.testid)
+            throw Error(
+                `Error getting testid for current scenario:${world.pickle.name}`
+            );
+    },
     /**
      *
      * Runs before a Cucumber Step.
@@ -304,8 +318,18 @@ export const config: WebdriverIO.Config = {
      * @param {number}             result.duration  duration of scenario in milliseconds
      * @param {Object}             context          Cucumber World object
      */
-    // afterStep: function (step, scenario, result, context) {
-    // },
+    afterStep: function (step, scenario, result, context) {
+        console.log(`>> step: ${JSON.stringify(step)}`);
+        console.log(`>> scenariop is: ${JSON.stringify(scenario)}`);
+        console.log(`>> result is : ${JSON.stringify(result)}`);
+        console.log(`>> context is: ${JSON.stringify(context)}`);
+
+        // Take screenshot if test case is failed
+        await browser.takeScreenshot();
+        // if (result.passed) {
+        //   await browser.takeScreenshot();
+        // }
+    },
     /**
      *
      * Runs after a Cucumber Scenario.

@@ -1,6 +1,7 @@
 import { Given, Then, When } from "@wdio/cucumber-framework";
 import { timeouts } from "../../config/timeouts-config";
 import { browserOpenUrl } from "../../support/browser/browser-open-url";
+import logger from "../../support/logger";
 
 
 export let validCredential: any = {
@@ -9,6 +10,7 @@ export let validCredential: any = {
 };
 
 Given(/^Open the actitime application$/, async () => {
+    logger.info(`execution started`)
     await browserOpenUrl('https://demo.actitime.com/login.do');
 });
 
