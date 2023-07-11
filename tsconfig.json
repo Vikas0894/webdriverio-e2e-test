@@ -6,6 +6,7 @@
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "suppressExcessPropertyErrors": true,
+        "ignoreDeprecations": "5.0",
         "outDir": "./dist", 
         "types": [
             "node",
