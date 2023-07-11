@@ -1,4 +1,4 @@
-import { readExcelFile } from "./files/read-excel-file";
+import { readExcelFile } from "./read-excel-file";
 
 const rowInput = readExcelFile('./data/testData.xlsx','TestData');
 export let validExcelCredential: any = {

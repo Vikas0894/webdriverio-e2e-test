@@ -24,8 +24,8 @@ Then(/^I verify the user$/, async () => {
 });
 
 Then(/^I verify Number Of Product on home page$/, async () => {
-    if(!9) throw Error(`Invalid number Provided:${9}`)
-    let num=await $$('//div[@class="col-lg-4 col-md-6 mb-4"]');
-    assertEqual(num.length,9,'Product number is not matched')
+    if (!9) throw Error(`Invalid number Provided:${9}`)
+    let num = await $$('//div[@class="col-lg-4 col-md-6 mb-4"]');
+    assertEqual(num.length, 9, 'Product number is not matched')
     logger.info(`execution completed`)
 });

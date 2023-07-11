@@ -2,7 +2,7 @@ import { timeouts } from "../config/timeouts-config";
 import { ButtonControl } from "../base-controls/button-control";
 import { ElementControl } from "../base-controls/element-control";
 import { InputControl } from "../base-controls/input-control";
-import { validExcelCredential } from "../support/get-excel-data";
+import { validExcelCredential } from "../support/files/get-excel-data";
 
 
 class LoginPage {

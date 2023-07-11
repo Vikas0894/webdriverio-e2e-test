@@ -1,4 +1,4 @@
-import { readCsvFile } from "./files/read-csv-file";
+import { readCsvFile } from "./read-csv-file";
 
 const rowInput = readCsvFile('./data/testdata.csv');
 export let validCredential: any = {
