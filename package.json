@@ -48,6 +48,7 @@
     "wdio-chromedriver-service": "^7.3.2",
     "wdio-cucumberjs-json-reporter": "^4.4.3",
     "winston": "^3.8.2",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "allure-commandline": "^2.23.0"
   }
 }
