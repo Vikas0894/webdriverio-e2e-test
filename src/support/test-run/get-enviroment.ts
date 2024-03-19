@@ -1,4 +1,3 @@
-import { Capabilities } from "@wdio/types";
 
 const ENVIROMENT = {
     IOS: 'iOS',
